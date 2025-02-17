@@ -3,17 +3,17 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
 local_ip=$(hostname -I | awk '{print $1}')
-echo -e "${GREEN}Sebelum melanjutkan, silahkan baca terlebih dahulu. Apakah anda ingin melanjutkan? (y/n)${NC}"
+echo -e "${GREEN}Apakah anda ingin sudah MAKAN? (y/n)${NC}"
 read confirmation
 
 if [ "$confirmation" != "y" ]; then
-    echo -e "${GREEN}Install dibatalkan. Tidak ada perubahan dalam ubuntu server anda.${NC}"
+    echo -e "${GREEN}Install dibatalkan. Tolong MAKAN dulu ya.${NC}"
     /tmp/install.sh
     exit 1
 fi
 for ((i = 5; i >= 1; i--)); do
 	sleep 1
-    echo "Melanjutkan dalam $i. Tekan ctrl+c untuk membatalkan"
+    echo "$i. Nungguin ya. Sabar dong"
 done
 
 #MongoDB
@@ -181,7 +181,7 @@ if [ "$confirmation" != "y" ]; then
 fi
 for ((i = 5; i >= 1; i--)); do
 	sleep 1
-    echo "Lanjut Install Parameter $i. Tekan ctrl+c untuk membatalkan"
+    echo "$i. Nungguin ya. Sabar dong"
 done
 
 rm -r /usr/lib/node_modules/genieacs

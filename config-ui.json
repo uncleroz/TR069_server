@@ -1,0 +1,108 @@
+{
+  "ui": {
+    "device": {
+      "tabs": {
+        "overview": {
+          "label": "Overview",
+          "components": [
+            {
+              "component": "overview-panel",
+              "parameters": ["InternetGatewayDevice", "Device"]
+            },
+            {
+              "component": "device-info",
+              "parameters": ["InternetGatewayDevice", "Device"]
+            }
+          ]
+        },
+        "status": {
+          "label": "Status",
+          "components": [
+            {
+              "component": "parameters-list",
+              "parameters": {
+                "filter": "InternetGatewayDevice.WANDevice.1.WANConnectionDevice.1.WANIPConnection.1.Stats.",
+                "columns": [
+                  {"label": "Parameter", "parameter": "_path"},
+                  {"label": "Value", "parameter": "_value"}
+                ]
+              }
+            }
+          ]
+        },
+        "wireless": {
+          "label": "Wireless",
+          "components": [
+            {
+              "component": "wifi-parameters",
+              "parameters": {
+                "filter": "InternetGatewayDevice.LANDevice.1.WLANConfiguration.",
+                "columns": [
+                  {"label": "SSID", "parameter": "SSID"},
+                  {"label": "Channel", "parameter": "Channel"},
+                  {"label": "Enable", "parameter": "Enable"}
+                ]
+              }
+            },
+            {
+              "component": "wifi-clients",
+              "parameters": {
+                "filter": "InternetGatewayDevice.LANDevice.1.WLANConfiguration.*.AssociatedDevice.",
+                "columns": [
+                  {"label": "MAC Address", "parameter": "MACAddress"},
+                  {"label": "IP Address", "parameter": "IPAddress"},
+                  {"label": "Signal", "parameter": "SignalStrength"}
+                ]
+              }
+            }
+          ]
+        },
+        "wan": {
+          "label": "WAN",
+          "components": [
+            {
+              "component": "wan-parameters",
+              "parameters": {
+                "filter": "InternetGatewayDevice.WANDevice.1.WANConnectionDevice.1.",
+                "columns": [
+                  {"label": "Connection Type", "parameter": "ConnectionType"},
+                  {"label": "Username", "parameter": "Username"},
+                  {"label": "ExternalIPAddress", "parameter": "ExternalIPAddress"}
+                ]
+              }
+            }
+          ]
+        },
+        "dhcp": {
+          "label": "DHCP Clients",
+          "components": [
+            {
+              "component": "dhcp-clients",
+              "parameters": {
+                "filter": "InternetGatewayDevice.LANDevice.1.Hosts.Host.",
+                "columns": [
+                  {"label": "Hostname", "parameter": "HostName"},
+                  {"label": "IP Address", "parameter": "IPAddress"},
+                  {"label": "MAC Address", "parameter": "MACAddress"},
+                  {"label": "Interface", "parameter": "InterfaceType"}
+                ]
+              }
+            }
+          ]
+        },
+        "diagnostics": {
+          "label": "Diagnostics",
+          "components": [
+            {
+              "component": "diagnostics-panel",
+              "parameters": {
+                "pingHost": "8.8.8.8",
+                "tracerouteHost": "8.8.8.8"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

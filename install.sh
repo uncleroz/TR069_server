@@ -4,21 +4,6 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
 local_ip=$(hostname -I | awk '{print $1}')
-echo -e "${GREEN}============================================================================${NC}"
-echo -e "${GREEN}============================================================================${NC}"
-echo -e "${GREEN}=========== AAA   LL      IIIII     JJJ   AAA   YY   YY   AAA ==============${NC}"   
-echo -e "${GREEN}========== AAAAA  LL       III      JJJ  AAAAA  YY   YY  AAAAA =============${NC}" 
-echo -e "${GREEN}========= AA   AA LL       III      JJJ AA   AA  YYYYY  AA   AA ============${NC}"
-echo -e "${GREEN}========= AAAAAAA LL       III  JJ  JJJ AAAAAAA   YYY   AAAAAAA ============${NC}"
-echo -e "${GREEN}========= AA   AA LLLLLLL IIIII  JJJJJ  AA   AA   YYY   AA   AA ============${NC}"
-echo -e "${GREEN}============================================================================${NC}"
-echo -e "${GREEN}========================= . Info 081-947-215-703 ===========================${NC}"
-echo -e "${GREEN}============================================================================${NC}"
-echo -e "${GREEN}${NC}"
-echo -e "${GREEN}Autoinstall GenieACS.${NC}"
-echo -e "${GREEN}${NC}"
-echo -e "${GREEN}======================================================================================${NC}"
-echo -e "${RED}${NC}"
 echo -e "${GREEN}Sebelum melanjutkan, silahkan baca terlebih dahulu. Apakah anda ingin melanjutkan? (y/n)${NC}"
 read confirmation
 
@@ -39,7 +24,6 @@ ${url_install}\
 mongod.sh | \
 sudo bash
 else
-    echo -e "${GREEN}============================================================================${NC}"
     echo -e "${GREEN}=================== mongodb sudah terinstall sebelumnya. ===================${NC}"
 fi
 sleep 3

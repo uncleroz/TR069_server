@@ -171,7 +171,6 @@ else
 fi
 
 #Sukses
-cp -r logo-3976e73d.svg /usr/lib/node_modules/genieacs/public/
 echo -e "${GREEN}Sekarang install parameter. Apakah anda ingin melanjutkan? (y/n)${NC}"
 read confirmation
 
@@ -185,9 +184,14 @@ for ((i = 5; i >= 1; i--)); do
     echo "Lanjut Install Parameter $i. Tekan ctrl+c untuk membatalkan"
 done
 
-cd 
-sudo mongodump --db=genieacs --out genieacs-backup
-sudo mongorestore --db=genieacs --drop genieacs
+cd
+rm -r /usr/lib/node_modules/genieacs
 unzip genieacs.zip -d /usr/lib/node_modules/
+
+sudo mongodump --db=genieacs --out genieacs-backup
+sudo mongorestore --db=genieacs --drop virtualparameter
+
 #Sukses
 echo -e "${GREEN}GenieACS UI akses port 3000. : http://$local_ip:3000 ${NC}"
+
+sudo chmod -R 755 /usr/lib/node_modules/genieacs/bin/genieacs-{cwmp,ext,fs,ui,nbi}

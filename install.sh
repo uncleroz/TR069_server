@@ -1,5 +1,4 @@
 #!/bin/bash
-url_install='https://srv.ddns.my.id/genieacs/genieacs/'
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
@@ -19,10 +18,13 @@ done
 
 #MongoDB
 if ! sudo systemctl is-active --quiet mongod; then
-    curl -s \
-${url_install}\
-mongod.sh | \
-sudo bash
+    curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+	echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+sudo apt update
+sudo apt install mongodb-org -y
+sudo systemctl start mongod.service
+sudo systemctl enable mongod
 else
     echo -e "${GREEN}Mongodb sudah terinstall sebelumnya. ${NC}"
 fi
@@ -50,10 +52,10 @@ check_node_version() {
 }
 
 if ! check_node_version; then
-    curl -s \
-${url_install}\
-nodejs.sh | \
-sudo bash
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - \
+	
+	sudo apt-get install -y nodejs
+	
 else
     NODE_VERSION=$(node -v | cut -d 'v' -f 2)
     echo -e "${GREEN}NodeJS sudah terinstall versi ${NODE_VERSION}. ${NC}"

@@ -184,7 +184,6 @@ for ((i = 5; i >= 1; i--)); do
     echo "Lanjut Install Parameter $i. Tekan ctrl+c untuk membatalkan"
 done
 
-cd
 rm -r /usr/lib/node_modules/genieacs
 unzip genieacs.zip -d /usr/lib/node_modules/
 

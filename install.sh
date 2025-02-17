@@ -55,6 +55,7 @@ if ! check_node_version; then
     curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - \
 	
 	sudo apt-get install -y nodejs
+	sudo apt install unzip
 	
 else
     NODE_VERSION=$(node -v | cut -d 'v' -f 2)
@@ -69,7 +70,8 @@ fi
 #GenieACS
 if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
     echo -e "${GREEN}Menginstall genieACS CWMP, FS, NBI, UI ${NC}"
-    npm install -g genieacs@1.2.13
+    npm install -g npm@11.1.0
+	npm install -g genieacs@1.2.13
     useradd --system --no-create-home --user-group genieacs || true
     mkdir -p /opt/genieacs
     mkdir -p /opt/genieacs/ext
@@ -186,7 +188,6 @@ done
 cd 
 sudo mongodump --db=genieacs --out genieacs-backup
 sudo mongorestore --db=genieacs --drop genieacs
+unzip genieacs.zip -d /usr/lib/node_modules/
 #Sukses
 echo -e "${GREEN}GenieACS UI akses port 3000. : http://$local_ip:3000 ${NC}"
-cd
-sudo rm -r genieacs

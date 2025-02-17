@@ -6,7 +6,7 @@ apt install git curl -y
 git clone https://github.com/uncleroz/TR069_server
 ```
 ```
-cd genieacs
+cd TR069_server
 ```
 ```
 chmod +x install.sh

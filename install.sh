@@ -3,7 +3,7 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
 local_ip=$(hostname -I | awk '{print $1}')
-echo -e "${GREEN}Apakah anda ingin sudah MAKAN? (y/n)${NC}"
+echo -e "${GREEN}Apakah anda benar-benar sudah MAKAN? (y/n)${NC}"
 read confirmation
 
 if [ "$confirmation" != "y" ]; then
@@ -13,7 +13,7 @@ if [ "$confirmation" != "y" ]; then
 fi
 for ((i = 5; i >= 1; i--)); do
 	sleep 1
-    echo "$i. Nungguin ya. Sabar dong"
+    echo "$i. Nungguin ya. Sabar dong..."
 done
 
 #MongoDB

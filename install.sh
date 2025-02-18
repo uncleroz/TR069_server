@@ -54,7 +54,9 @@ check_node_version() {
 if ! check_node_version; then
     curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - \
 	
+	sudo apt update
 	sudo apt-get install -y nodejs
+	npm install -g npm@11.1.0
 	sudo apt install unzip
 	
 else
@@ -70,7 +72,6 @@ fi
 #GenieACS
 if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
     echo -e "${GREEN}Menginstall genieACS CWMP, FS, NBI, UI ${NC}"
-    npm install -g npm@11.1.0
 	npm install -g genieacs@1.2.13
     useradd --system --no-create-home --user-group genieacs || true
     mkdir -p /opt/genieacs

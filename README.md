@@ -5,10 +5,10 @@ Ngapunten Sanget
 apt install git curl -y
 ```
 ```
-git clone https://github.com/uncleroz/TR069_server_Ubuntu
+git clone https://github.com/uncleroz/TR069_server
 ```
 ```
-cd TR069_server_Ubuntu
+cd TR069_server
 ```
 ```
 chmod +x install.sh

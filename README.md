@@ -1,3 +1,5 @@
+# Script Khusus Ubuntu 20.04
+Ngapunten Sanget
 # Usage
 ```
 apt install git curl -y

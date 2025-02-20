@@ -21,10 +21,10 @@ if ! sudo systemctl is-active --quiet mongod; then
     curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
 	echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
 
-sudo apt update
-sudo apt install mongodb-org -y
-sudo systemctl start mongod.service
-sudo systemctl enable mongod
+	sudo apt update
+	sudo apt install mongodb-org -y
+	sudo systemctl start mongod.service
+	sudo systemctl enable mongod
 else
     echo -e "${GREEN}Mongodb sudah terinstall sebelumnya. ${NC}"
 fi
@@ -185,15 +185,15 @@ for ((i = 5; i >= 1; i--)); do
     echo "$i. Nungguin ya. Sabar dong"
 done
 
-rm -r /usr/lib/node_modules/genieacs
-unzip genieacs.zip -d /usr/lib/node_modules/
+	rm -r /usr/lib/node_modules/genieacs
+	unzip genieacs.zip -d /usr/lib/node_modules/
 
-sudo mongodump --db=genieacs --out genieacs-backup
-sudo mongorestore --db=genieacs --drop virtualparameter
+	sudo mongodump --db=genieacs --out genieacs-backup
+	sudo mongorestore --db=genieacs --drop virtualparameter
 
 #Sukses
 echo -e "${GREEN}GenieACS UI akses port 3000. : http://$local_ip:3000 ${NC}"
 
-sudo chmod -R 755 /usr/lib/node_modules/genieacs/bin/genieacs-{cwmp,ext,fs,ui,nbi}
-sudo ufw allow 3000
-sudo ufw allow 7547
+	sudo chmod -R 755 /usr/lib/node_modules/genieacs/bin/genieacs-{cwmp,ext,fs,ui,nbi}
+	sudo ufw allow 3000
+	sudo ufw allow 7547

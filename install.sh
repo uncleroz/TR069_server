@@ -3,7 +3,12 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
 local_ip=$(hostname -I | awk '{print $1}')
-echo -e "${GREEN}Apakah anda benar-benar sudah MAKAN? (y/n)${NC}"
+
+echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+echo -e "${GREEN}==============================================="
+echo -e "${GREEN}   Apakah anda benar-benar sudah MAKAN? (y/n)${NC}"
+echo -e "${GREEN}==============================================="
+echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 read confirmation
 
 if [ "$confirmation" != "y" ]; then
@@ -13,7 +18,7 @@ if [ "$confirmation" != "y" ]; then
 fi
 for ((i = 5; i >= 1; i--)); do
 	sleep 1
-    echo "$i. Nungguin ya. Sabar dong..."
+    echo "Nungguin ya. Sabar dong..."
 done
 
 #MongoDB
@@ -26,11 +31,15 @@ if ! sudo systemctl is-active --quiet mongod; then
 	sudo systemctl start mongod.service
 	sudo systemctl enable mongod
 else
-    echo -e "${GREEN}Mongodb sudah terinstall sebelumnya. ${NC}"
+	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	echo -e "${GREEN}==============================================="
+    echo -e "${GREEN}     Mongodb sudah terinstall sebelumnya. ${NC}"
+	echo -e "${GREEN}==============================================="
+	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 fi
 sleep 3
 if ! sudo systemctl is-active --quiet mongod; then
-    sudo rm genieacs/install.sh
+    sudo rm TR069_server/install.sh
     exit 1
 fi
 
@@ -65,13 +74,18 @@ else
 
 fi
 if ! check_node_version; then
-    sudo rm genieacs/install.sh
+    sudo rm TR069_server/install.sh
     exit 1
 fi
 
 #GenieACS
 if !  systemctl is-active --quiet genieacs-{cwmp,fs,ui,nbi}; then
-    echo -e "${GREEN}Menginstall genieACS CWMP, FS, NBI, UI ${NC}"
+	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	echo -e "${GREEN}==============================================="
+    echo -e "${GREEN}    Menginstall genieACS CWMP, FS, NBI, UI ${NC}"
+	echo -e "${GREEN}==============================================="
+	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	
 	npm install -g genieacs@1.2.13
     useradd --system --no-create-home --user-group genieacs || true
     mkdir -p /opt/genieacs
@@ -162,27 +176,49 @@ EOF
     dateext
 }
 EOF
-    echo -e "${GREEN}Install APP GenieACS selesai...${NC}"
-    systemctl daemon-reload
+    echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	echo -e "${GREEN}==============================================="
+	echo -e "${GREEN}       Install APP GenieACS selesai...${NC}"
+    echo -e "${GREEN}==============================================="
+	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	
+	systemctl daemon-reload
     systemctl enable --now genieacs-{cwmp,fs,ui,nbi}
-    systemctl start genieacs-{cwmp,fs,ui,nbi}    
-    echo -e "${GREEN}Sukses genieACS CWMP, FS, NBI, UI ${NC}"
+    systemctl start genieacs-{cwmp,fs,ui,nbi}
+	
+	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	echo -e "${GREEN}==============================================="
+    echo -e "${GREEN}       Sukses genieACS CWMP, FS, NBI, UI ${NC}"
+	echo -e "${GREEN}==============================================="
+	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 else
-    echo -e "${GREEN}GenieACS sudah terinstall sebelumnya.${NC}"
+    echo -e "${RED}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	echo -e "${RED}==============================================="
+	echo -e "${RED}     GenieACS sudah terinstall sebelumnya.${NC}"
+	echo -e "${RED}==============================================="
+	echo -e "${RED}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 fi
 
 #Sukses
-echo -e "${GREEN}Sekarang install parameter. Apakah anda ingin melanjutkan? (y/n)${NC}"
-read confirmation
+	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	echo -e "${GREEN}==============================================="
+	echo -e "${GREEN}          Sekarang install parameter.          "
+	echo -e "${GREEN}      Apakah anda ingin melanjutkan? (y/n)${NC}"
+	echo -e "${GREEN}==============================================="
+	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	read confirmation
 
 if [ "$confirmation" != "y" ]; then
-    echo -e "${GREEN}Install dibatalkan..${NC}"
-    
+	echo -e "${RED}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	echo -e "${RED}==============================================="
+    echo -e "${RED}           Install dibatalkan..${NC}"
+	echo -e "${RED}==============================================="
+	echo -e "${RED}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
     exit 1
 fi
 for ((i = 5; i >= 1; i--)); do
 	sleep 1
-    echo "$i. Nungguin ya. Sabar dong"
+    echo "Nungguin ya. Sabar dong"
 done
 
 	rm -r /usr/lib/node_modules/genieacs
@@ -192,7 +228,11 @@ done
 	sudo mongorestore --db=genieacs --drop virtualparameter
 
 #Sukses
-echo -e "${GREEN}GenieACS UI akses port 3000. : http://$local_ip:3000 ${NC}"
+	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+	echo -e "${GREEN}====================================================="
+	echo -e "${GREEN}GenieACS UI akses port 3000. : http://$local_ip:3000 ${NC}"
+	echo -e "${GREEN}====================================================="
+	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
 	sudo chmod -R 755 /usr/lib/node_modules/genieacs/bin/genieacs-{cwmp,ext,fs,ui,nbi}
 	sudo ufw allow 3000

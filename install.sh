@@ -178,7 +178,7 @@ EOF
 EOF
     echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 	echo -e "${GREEN}==============================================="
-	echo -e "${GREEN}       Install APP GenieACS selesai...${NC}"
+	echo -e "${GREEN}       Install APP GenieACS selesai...    ${NC}"
     echo -e "${GREEN}==============================================="
 	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 	
@@ -188,7 +188,7 @@ EOF
 	
 	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 	echo -e "${GREEN}==============================================="
-    echo -e "${GREEN}       Sukses genieACS CWMP, FS, NBI, UI ${NC}"
+    echo -e "${GREEN}       Sukses genieACS CWMP, FS, NBI, UI  ${NC}"
 	echo -e "${GREEN}==============================================="
 	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 else
@@ -211,7 +211,7 @@ fi
 if [ "$confirmation" != "y" ]; then
 	echo -e "${RED}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 	echo -e "${RED}==============================================="
-    echo -e "${RED}           Install dibatalkan..${NC}"
+    echo -e "${RED}           Install dibatalkan..           ${NC}"
 	echo -e "${RED}==============================================="
 	echo -e "${RED}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
     exit 1
@@ -230,7 +230,7 @@ done
 #Sukses
 	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	echo -e "${GREEN}====================================================="
-	echo -e "${GREEN}GenieACS UI akses port 3000. : http://$local_ip:3000 ${NC}"
+	echo -e "${GREEN}       Akses GenieACS : http://$local_ip:3000   ${NC}"
 	echo -e "${GREEN}====================================================="
 	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 

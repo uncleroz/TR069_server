@@ -3,8 +3,8 @@ Ini adalah script auto install untuk GenieACS. Script ini berisi penginstalan NO
 Semoga bermanfaat.
 Terima Kasih
 # Usage
-User = admin
-Pass = admin
+User = *admin
+Pass = *admin
 # Usage
 ```
 apt install git curl -y

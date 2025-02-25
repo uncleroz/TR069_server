@@ -1,7 +1,8 @@
 # Script Khusus Ubuntu 20.04
 Ini adalah script auto install untuk GenieACS. Script ini berisi penginstalan NODEJS, MongoDB, dan GenieACS + Parameter tambahan.
-Semoga bermanfaat.
-Terima Kasih
+
+
+Semoga bermanfaat. Terima Kasih
 # Usage
 User = *admin*
 

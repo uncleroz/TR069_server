@@ -213,10 +213,6 @@ if [ "$confirmation" != "y" ]; then
 	echo -e "${RED}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
     exit 1
 fi
-for ((i = 5; i >= 1; i--)); do
-	sleep 1
-    echo "Nungguin ya. Sabar dong"
-done
 
 	sudo mongodump --db=genieacs --out genieacs-backup
 	sudo mongorestore --db=genieacs --drop db

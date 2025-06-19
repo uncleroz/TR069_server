@@ -6,20 +6,16 @@ local_ip=$(hostname -I | awk '{print $1}')
 
 echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 echo -e "${GREEN}==============================================="
-echo -e "${GREEN}   Apakah anda benar-benar sudah MAKAN? (y/n)${NC}"
+echo -e "${GREEN}   Apakah Anda yakin menginstall GenieACS? (y/n)${NC}"
 echo -e "${GREEN}==============================================="
 echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 read confirmation
 
 if [ "$confirmation" != "y" ]; then
-    echo -e "${GREEN}Install dibatalkan. Tolong MAKAN dulu ya.${NC}"
+    echo -e "${GREEN}Install dibatalkan.${NC}"
     /tmp/install.sh
     exit 1
 fi
-for ((i = 5; i >= 1; i--)); do
-	sleep 1
-    echo "Nungguin ya. Sabar dong..."
-done
 
 #MongoDB
 if ! sudo systemctl is-active --quiet mongod; then
@@ -31,12 +27,13 @@ if ! sudo systemctl is-active --quiet mongod; then
 	sudo systemctl start mongod.service
 	sudo systemctl enable mongod
 else
-	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
-	echo -e "${GREEN}==============================================="
-    echo -e "${GREEN}     Mongodb sudah terinstall sebelumnya. ${NC}"
-	echo -e "${GREEN}==============================================="
-	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	echo -e "${RED}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
+	echo -e "${RED}==============================================="
+    echo -e "${RED}     Mongodb sudah terinstall sebelumnya. ${NC}"
+	echo -e "${RED}==============================================="
+	echo -e "${RED}<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>"
 fi
+
 sleep 3
 if ! sudo systemctl is-active --quiet mongod; then
     sudo rm TR069_server/install.sh
@@ -225,7 +222,7 @@ done
 	unzip genieacs.zip -d /usr/lib/node_modules/
 
 	sudo mongodump --db=genieacs --out genieacs-backup
-	sudo mongorestore --db=genieacs --drop virtualparameter
+	sudo mongorestore --db=genieacs --drop db_genieacs
 
 #Sukses
 	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>"

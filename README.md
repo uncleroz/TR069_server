@@ -23,3 +23,10 @@ chmod +x install.sh
 ```
 bash install.sh
 ```
+#Usage
+'''
+sudo mongodump --db=genieacs --out genieacs-backup
+'''
+'''
+sudo mongorestore --db=genieacs --drop db-v2
+'''

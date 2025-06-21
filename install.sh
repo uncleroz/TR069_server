@@ -214,9 +214,6 @@ if [ "$confirmation" != "y" ]; then
     exit 1
 fi
 
-	sudo mongodump --db=genieacs --out genieacs-backup
-	sudo mongorestore --db=genieacs --drop db
-
 #Sukses
 	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	echo -e "${GREEN}====================================================="

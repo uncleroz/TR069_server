@@ -214,6 +214,8 @@ if [ "$confirmation" != "y" ]; then
     exit 1
 fi
 
+	cp -ru genieacs /usr/lib/node_modules/
+	mongorestore --db genieacs --drop db-v2
 #Sukses
 	echo -e "${GREEN}<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	echo -e "${GREEN}====================================================="
